@@ -39,6 +39,7 @@
  ## obs.: Para o funcionamento Do projecto deves configurar seguindo os seguintes passos: #Project setup
 
  ⚙ flutter pub get <br>
+ ⚙ flutter run <br>
 
 
  <br>
