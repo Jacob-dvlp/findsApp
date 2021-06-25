@@ -34,7 +34,7 @@ class HomeScreens extends StatelessWidget {
                               color: Colors.blue,
                               width: 1.8,
                               style: BorderStyle.solid)),
-                      height: 380,
+                      height: 350,
                       child: Column(
                         children: [
                           Padding(
@@ -63,19 +63,19 @@ class HomeScreens extends StatelessWidget {
                                     ),
                                   ],
                                 ),
-                                Padding(
-                                  padding: const EdgeInsets.only(top: 8.0),
-                                  child: Align(
-                                    alignment: Alignment.bottomLeft,
-                                    child: Text(
-                                      "Item achado: ${_.obg}",
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 15,
-                                      ),
-                                    ),
-                                  ),
-                                ),
+                                // Padding(
+                                //   padding: const EdgeInsets.only(top: 8.0),
+                                //   child: Align(
+                                //     alignment: Alignment.bottomLeft,
+                                //     child: Text(
+                                //       "Item achado: ${_.obg}",
+                                //       style: TextStyle(
+                                //         fontWeight: FontWeight.bold,
+                                //         fontSize: 15,
+                                //       ),
+                                //     ),
+                                //   ),
+                                // ),
                               ],
                             ),
                           ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:mobile/views/widgets/custons.dart';
 
@@ -16,16 +17,9 @@ class LoginScreen extends StatelessWidget {
               child: Container(
                 child: Column(
                   children: [
-                    CircleAvatar(
-                      backgroundColor: Colors.blue,
-                      maxRadius: 100,
-                      child: Container(
-                        child: Icon(
-                          Icons.lock_outlined,
-                          size: 170,
-                          color: Colors.white,
-                        ),
-                      ),
+                    SvgPicture.asset(
+                      "assets/svg/find2.svg",
+                      width: 300,
                     ),
                     SizedBox(
                       height: 20,
