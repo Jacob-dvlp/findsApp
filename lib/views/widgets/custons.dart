@@ -20,10 +20,12 @@ class InputsText extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: TextField(
+          
           keyboardType: TextInputType.text,
           decoration: InputDecoration(
+            counterStyle: TextStyle(backgroundColor: Colors.red),
             hintText: "$title",
-            border: OutlineInputBorder(),
+            border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
             prefixIcon: icon,
           ),
         ),
@@ -35,19 +37,30 @@ class InputsText extends StatelessWidget {
 class Btn extends StatelessWidget {
   final String? name;
   final String? rout;
+  final Color? color, colorText;
 
-  const Btn({Key? key, this.name, required this.rout}) : super(key: key);
+  const Btn(
+      {Key? key, this.name, required this.rout, this.color, this.colorText})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 50,
       width: 180,
-      child: ElevatedButton(
-        onPressed: () => Get.offAllNamed("$rout"),
-        child: Text(
-          "$name",
-          style: TextStyle(fontWeight: FontWeight.bold),
+      child: ClipRRect(
+        child: ElevatedButton(
+          style: ButtonStyle(
+            elevation: MaterialStateProperty.all(30),
+            foregroundColor: MaterialStateProperty.all<Color?>(Colors.blue),
+            backgroundColor: MaterialStateProperty.all<Color?>(color),
+            overlayColor: MaterialStateProperty.all<Color?>(Colors.blue),
+          ),
+          onPressed: () => Get.offAllNamed("$rout"),
+          child: Text(
+            "$name",
+            style: TextStyle(fontWeight: FontWeight.bold, color: colorText),
+          ),
         ),
       ),
     );

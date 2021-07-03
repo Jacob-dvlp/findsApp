@@ -8,7 +8,7 @@
 
 <p> Find é um aplicativo   que vai listar os itens perdidos nesse caso  o achado irá tirar uma foto e publicar no app e o procurado (dono do item perdido) ira entrar no aplicativo e pesqueisar o item que ele perdeu, caso ele achar ele vai entrar em contacto com o  achado(a pessoa que achou o tal item ) pra receber o que o lhe pertece. </p>
 
-<br>
+<br> 
 
 
 
