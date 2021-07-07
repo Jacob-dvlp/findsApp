@@ -1,35 +1,48 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:mobile/util/hexdcml.dart';
+import 'package:mobile/views/screens/controllers-screens/controller_login.dart';
 import 'package:mobile/views/widgets/custons.dart';
 
 class LoginScreen extends StatelessWidget {
-  const LoginScreen({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: Container(
-          color: Colors.blue,
-          height: 780,
-          width: MediaQuery.of(context).size.width,
+    return GetBuilder<ControllerLogin>(
+      init: ControllerLogin(),
+      builder: (_) => Scaffold(
+        backgroundColor: Hexdcml("#2397FA"),
+        body: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              SvgPicture.asset(
-                "assets/svg/find2.svg",
-                width: 300,
+              SizedBox(
+                height: 100,
+              ),
+              Text(
+                "Login",
+                style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white),
+              ),
+              Align(
+                alignment: Alignment.bottomRight,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: SvgPicture.asset(
+                    "assets/svg/login.svg",
+                    width: 270,
+                  ),
+                ),
               ),
               ClipRRect(
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(40),
                   topRight: Radius.circular(40),
                 ),
-                child: Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: 420,
-                  color: Colors.white,
+                child: Form(
+                  key: _.key,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     mainAxisSize: MainAxisSize.min,
@@ -37,93 +50,129 @@ class LoginScreen extends StatelessWidget {
                       SizedBox(
                         height: 50,
                       ),
+                      Align(
+                          alignment: Alignment.bottomLeft,
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 14),
+                            child: Text(
+                              "Email",
+                              style:
+                                  TextStyle(fontSize: 17, color: Colors.white),
+                            ),
+                          )),
                       InputsText(
+                        controller: _.email,
                         title: "Seu Email",
                         icon: Icon(Icons.email_outlined),
                       ),
                       SizedBox(
                         height: 5,
                       ),
-                      InputsText(
-                        title: "Sua Senha",
-                        icon: Icon(Icons.lock_outline),
-                      ),
-                      ClipRRect(
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(40),
-                            topRight: Radius.circular(40)),
-                        child: Container(
-                          height: 183,
-                          color: Colors.blue,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(right: 25),
-                                    child: GestureDetector(
-                                      onTap: () => {},
-                                      child: Text(
-                                        "Criar nova senha",
-                                        style: TextStyle(
-                                            fontSize: 16,
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                    ),
-                                  )
-                                ],
-                              ),
-                              SizedBox(
-                                height: 20,
-                              ),
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(20),
-                                child: Btn(
-                                  colorText: Colors.black,
-                                  rout: "/home",
-                                  color: Colors.white,
-                                  name: "Faça o Login",
+                      Align(
+                          alignment: Alignment.bottomLeft,
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 14),
+                            child: Text(
+                              "Senha",
+                              style:
+                                  TextStyle(fontSize: 17, color: Colors.white),
+                            ),
+                          )),
+                      Padding(
+                        padding: const EdgeInsets.all(5.0),
+                        child: Padding(
+                          padding: const EdgeInsets.all(5.0),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15),
+                              color: Colors.white,
+                            ),
+                            child: TextField(
+                              controller: _.passwordEditing,
+                              obscureText: _.password,
+                              keyboardType: TextInputType.text,
+                              decoration: InputDecoration(
+                                fillColor: Colors.white,
+                                counterStyle:
+                                    TextStyle(backgroundColor: Colors.red),
+                                hintText: "Sua senha",
+                                border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(0)),
+                                prefixIcon: Icon(Icons.lock),
+                                suffixIcon: IconButton(
+                                  onPressed: () => _.vispssword(),
+                                  icon: _.password
+                                      ? Icon(Icons.visibility_off)
+                                      : Icon(Icons.visibility),
                                 ),
                               ),
-                              SizedBox(
-                                height: 25,
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    "Não se inscreveu ?",
-                                    style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  SizedBox(
-                                    width: 2,
-                                  ),
-                                  GestureDetector(
-                                    onTap: () => Get.toNamed("/register"),
-                                    child: Text(
-                                      "Criar a conta",
-                                      style: TextStyle(
-                                          fontSize: 16,
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ],
+                            ),
                           ),
                         ),
-                      )
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(right: 25),
+                            child: GestureDetector(
+                              onTap: () => {},
+                              child: Text(
+                                "Esqueceu sua senha ?",
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                      SizedBox(
+                        height: 50,
+                      ),
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: Container(
+                          width: 300,
+                          child: Btn(
+                            colorText: Hexdcml("#2397FA"),
+                            rout: "/home",
+                            color: Colors.white,
+                            name: "Login",
+                            fontSize: 18,
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 75,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Não tem um conta ?",
+                            style: TextStyle(color: Colors.white, fontSize: 16),
+                          ),
+                          SizedBox(
+                            width: 2,
+                          ),
+                          GestureDetector(
+                            onTap: () => Get.toNamed("/register"),
+                            child: Text(
+                              "Cadastra-se",
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ],
+                      ),
                     ],
                   ),
                 ),
-              )
+              ),
             ],
           ),
         ),

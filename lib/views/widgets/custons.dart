@@ -1,32 +1,47 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/avd.dart';
 import 'package:get/get.dart';
 
 class InputsText extends StatelessWidget {
   final TextInputType? typeinput;
   final String? title;
   final Icon? icon;
-  final bool? isBorder;
+  final Widget? iconpassword;
+  final TextEditingController? controller;
 
-  const InputsText(
-      {Key? key, this.typeinput, this.icon, this.title, this.isBorder})
-      : super(key: key);
+  const InputsText({
+    Key? key,
+    this.typeinput,
+    this.icon,
+    this.title,
+    this.iconpassword,
+    this.controller,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(5.0),
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: TextField(
-          
-          keyboardType: TextInputType.text,
-          decoration: InputDecoration(
-            counterStyle: TextStyle(backgroundColor: Colors.red),
-            hintText: "$title",
-            border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
-            prefixIcon: icon,
+        padding: const EdgeInsets.all(5.0),
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15),
+            color: Colors.white,
+          ),
+          child: TextField(
+            controller: controller,
+            keyboardType: TextInputType.text,
+            decoration: InputDecoration(
+                fillColor: Colors.white,
+                counterStyle: TextStyle(backgroundColor: Colors.red),
+                hintText: "$title",
+                border:
+                    OutlineInputBorder(borderRadius: BorderRadius.circular(0)),
+                prefixIcon: icon,
+                suffixIcon: iconpassword),
           ),
         ),
       ),
@@ -38,9 +53,15 @@ class Btn extends StatelessWidget {
   final String? name;
   final String? rout;
   final Color? color, colorText;
+  final double? fontSize;
 
   const Btn(
-      {Key? key, this.name, required this.rout, this.color, this.colorText})
+      {Key? key,
+      this.name,
+      required this.rout,
+      this.color,
+      this.colorText,
+      this.fontSize})
       : super(key: key);
 
   @override
@@ -50,16 +71,17 @@ class Btn extends StatelessWidget {
       width: 180,
       child: ClipRRect(
         child: ElevatedButton(
+          autofocus: true,
           style: ButtonStyle(
-            elevation: MaterialStateProperty.all(30),
-            foregroundColor: MaterialStateProperty.all<Color?>(Colors.blue),
             backgroundColor: MaterialStateProperty.all<Color?>(color),
-            overlayColor: MaterialStateProperty.all<Color?>(Colors.blue),
           ),
           onPressed: () => Get.offAllNamed("$rout"),
           child: Text(
             "$name",
-            style: TextStyle(fontWeight: FontWeight.bold, color: colorText),
+            style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: colorText,
+                fontSize: fontSize),
           ),
         ),
       ),
@@ -162,7 +184,7 @@ class DrawerMenu extends StatelessWidget {
                   style: drawetitles,
                 ),
                 onTap: () {
-                  exit(1);
+                  Get.back();
                 },
               )
             ],

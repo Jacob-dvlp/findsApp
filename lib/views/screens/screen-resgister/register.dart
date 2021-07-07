@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mobile/util/hexdcml.dart';
+import 'package:mobile/views/screens/controllers-screens/controller_register.dart';
 import 'package:mobile/views/widgets/custons.dart';
 
 class Register extends StatelessWidget {
@@ -7,104 +9,209 @@ class Register extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      floatingActionButtonLocation: FloatingActionButtonLocation.miniStartTop,
-      floatingActionButton: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: FloatingActionButton(
-          child: Icon(
-            Icons.chevron_left,
-            color: Colors.blue,
+    return GetBuilder<ControllerRegister>(
+      init: ControllerRegister(),
+      builder: (_) => Scaffold(
+        floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+        floatingActionButton: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: FloatingActionButton(
+            child: Icon(
+              Icons.chevron_left,
+              color: Colors.white,
+            ),
+            backgroundColor: Hexdcml("#2397FA"),
+            onPressed: () => Get.back(),
           ),
-          backgroundColor: Colors.white,
-          onPressed: () => Get.back(),
         ),
-      ),
-      body: Container(
-        color: Colors.blue,
-        height: MediaQuery.of(context).size.height,
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Container(
-                height: 240,
-              ),
-              ClipRRect(
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(40),
-                  topRight: Radius.circular(40),
+        body: Container(
+          color: Colors.blue,
+          height: MediaQuery.of(context).size.height,
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 100,
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.all(0.0),
-                  child: Container(
-                    height: 540,
+                Text(
+                  "Cadastre-se!",
+                  style: TextStyle(
+                    fontSize: 20,
                     color: Colors.white,
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          height: 1,
-                        ),
-                        InputsText(
-                          title: "Nome completo",
-                          typeinput: TextInputType.text,
-                        ),
-                        InputsText(
-                          title: "Provincia",
-                          typeinput: TextInputType.text,
-                        ),
-                        Row(
-                          children: [
-                            Expanded(
-                              child: InputsText(
-                                title: "Municipio",
-                                typeinput: TextInputType.text,
-                              ),
-                            ),
-                            Expanded(
-                              child: InputsText(
-                                title: "Bairro",
-                                typeinput: TextInputType.text,
-                              ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            Expanded(
-                              child: InputsText(
-                                title: "Rua",
-                                typeinput: TextInputType.text,
-                              ),
-                            ),
-                            Expanded(
-                              child: InputsText(
-                                title: "Número",
-                                typeinput: TextInputType.number,
-                              ),
-                            ),
-                          ],
-                        ),
-                        InputsText(
-                          title: "Email",
-                          typeinput: TextInputType.emailAddress,
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(20),
-                          child: Btn(
-                            colorText: Colors.white,
-                            rout: "/home",
-                            name: "Criar a Conta",
-                          ),
-                        )
-                      ],
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(
+                  "É rápido e fácil.",
+                  style: TextStyle(fontSize: 20, color: Colors.white),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Align(
+                  alignment: Alignment.bottomLeft,
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 17),
+                    child: Text(
+                      "Dados Pessoal:",
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ],
+                Column(
+                  children: [
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Container(
+                            width: 50,
+                            child: InputsText(
+                              title: "           Nome",
+                              typeinput: TextInputType.text,
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: Container(
+                            width: 50,
+                            child: InputsText(
+                              title: "        Sobrenome",
+                              typeinput: TextInputType.text,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    InputsText(
+                      title: "                           Email ou celular",
+                      typeinput: TextInputType.emailAddress,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: Padding(
+                        padding: const EdgeInsets.all(5.0),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            color: Colors.white,
+                          ),
+                          child: TextField(
+                            obscureText: _.password,
+                            keyboardType: TextInputType.text,
+                            decoration: InputDecoration(
+                              fillColor: Colors.white,
+                              counterStyle:
+                                  TextStyle(backgroundColor: Colors.red),
+                              hintText: "                      Criar Senha",
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(0)),
+                              prefixIcon: Icon(Icons.lock),
+                              suffixIcon: IconButton(
+                                onPressed: () => _.vispssword(),
+                                icon: _.password
+                                    ? Icon(Icons.visibility)
+                                    : Icon(Icons.visibility_off),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: Padding(
+                        padding: const EdgeInsets.all(5.0),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            color: Colors.white,
+                          ),
+                          child: TextField(
+                            obscureText: _.password,
+                            keyboardType: TextInputType.text,
+                            decoration: InputDecoration(
+                              fillColor: Colors.white,
+                              counterStyle:
+                                  TextStyle(backgroundColor: Colors.red),
+                              hintText: "                    Repetir senha",
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(0)),
+                              prefixIcon: Icon(Icons.lock),
+                              suffixIcon: IconButton(
+                                onPressed: () => _.vispssword(),
+                                icon: _.password
+                                    ? Icon(Icons.visibility)
+                                    : Icon(Icons.visibility_off),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.bottomLeft,
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 17),
+                        child: Text(
+                          "Endereço:",
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                    InputsText(
+                      title: "                                     Rua/Av",
+                      typeinput: TextInputType.text,
+                    ),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: InputsText(
+                            title: "            Número",
+                            typeinput: TextInputType.text,
+                          ),
+                        ),
+                        Expanded(
+                          child: InputsText(
+                            title: "             Bairro",
+                            typeinput: TextInputType.number,
+                          ),
+                        ),
+                      ],
+                    ),
+                    InputsText(
+                      title: "                                    Cidade",
+                      typeinput: TextInputType.text,
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: Container(
+                        width: 300,
+                        child: Btn(
+                          color: Colors.white,
+                          colorText: Hexdcml("#2397FA"),
+                          rout: "/home",
+                          name: "Criar a Conta",
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 16,
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
