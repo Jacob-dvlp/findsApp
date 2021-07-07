@@ -10,7 +10,8 @@
 
 <br> 
 
-![screen](https://github.com/Jacob-dvlp/findsApp/blob/master/Screenshot_1625628866.png) [screen](https://github.com/Jacob-dvlp/findsApp/blob/master/Screenshot_1625628871.png)[screen](https://github.com/Jacob-dvlp/findsApp/blob/master/Screenshot_1625628879.png)
+![screen](https://github.com/Jacob-dvlp/findsApp/blob/master/Screenshot_1625628866.png) ![screen](https://github.com/Jacob-dvlp/findsApp/blob/master/Screenshot_1625628871.png)
+![screen](https://github.com/Jacob-dvlp/findsApp/blob/master/Screenshot_1625628879.png)
 
 
 
