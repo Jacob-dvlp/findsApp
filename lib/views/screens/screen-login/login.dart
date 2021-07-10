@@ -63,7 +63,10 @@ class LoginScreen extends StatelessWidget {
                       InputsText(
                         controller: _.email,
                         title: "Seu Email",
-                        icon: Icon(Icons.email_outlined),
+                        icon: Icon(
+                          Icons.email_outlined,
+                          color: Colors.blue,
+                        ),
                       ),
                       SizedBox(
                         height: 5,
@@ -87,7 +90,8 @@ class LoginScreen extends StatelessWidget {
                               borderRadius: BorderRadius.circular(15),
                               color: Colors.white,
                             ),
-                            child: TextField(
+                            child: TextFormField(
+                              validator: (_) {},
                               controller: _.passwordEditing,
                               obscureText: _.password,
                               keyboardType: TextInputType.text,
@@ -98,12 +102,19 @@ class LoginScreen extends StatelessWidget {
                                 hintText: "Sua senha",
                                 border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(0)),
-                                prefixIcon: Icon(Icons.lock),
+                                prefixIcon: Icon(
+                                  Icons.lock,
+                                  color: Colors.blue,
+                                ),
                                 suffixIcon: IconButton(
                                   onPressed: () => _.vispssword(),
                                   icon: _.password
-                                      ? Icon(Icons.visibility_off)
-                                      : Icon(Icons.visibility),
+                                      ? Icon(Icons.visibility_off,
+                                          color: Colors.blue)
+                                      : Icon(
+                                          Icons.visibility,
+                                          color: Colors.blue,
+                                        ),
                                 ),
                               ),
                             ),

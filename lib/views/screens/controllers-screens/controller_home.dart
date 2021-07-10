@@ -15,6 +15,8 @@ class ControllersScreen extends GetxController {
     );
   }
 
+  
+
   @override
   void onInit() {
     des();

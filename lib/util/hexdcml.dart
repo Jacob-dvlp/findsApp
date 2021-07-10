@@ -8,6 +8,5 @@ class Hexdcml extends Color {
     }
     return int.parse(color, radix: 16);
   }
-
   Hexdcml(final String color) : super(hexdecimal(color));
 }
