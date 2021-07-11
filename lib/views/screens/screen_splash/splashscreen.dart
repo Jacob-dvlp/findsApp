@@ -12,14 +12,14 @@ class Splashscreen extends StatelessWidget {
     return GetBuilder<ControllerSplash>(
       init: ControllerSplash(),
       builder: (_) => Scaffold(
-        backgroundColor: Hexdcml("2397FA"),
+        backgroundColor: Colors.amber,
         body: Column(
           children: [
             SizedBox(
               height: 140,
             ),
             SvgPicture.asset(
-              "assets/svg/open.svg",
+              "assets/svg/splash.svg",
               width: 500,
             ),
             Container(

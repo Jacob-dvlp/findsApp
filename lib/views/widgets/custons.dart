@@ -28,7 +28,7 @@ class InputsText extends StatelessWidget {
         padding: const EdgeInsets.all(5.0),
         child: Container(
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15),
+            borderRadius: BorderRadius.circular(30),
             color: Colors.white,
           ),
           child: TextField(
@@ -39,7 +39,7 @@ class InputsText extends StatelessWidget {
                 counterStyle: TextStyle(backgroundColor: Colors.red),
                 hintText: "$title",
                 border:
-                    OutlineInputBorder(borderRadius: BorderRadius.circular(0)),
+                    OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
                 prefixIcon: icon,
                 suffixIcon: iconpassword),
           ),

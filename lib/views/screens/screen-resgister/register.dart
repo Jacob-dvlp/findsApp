@@ -20,12 +20,12 @@ class Register extends StatelessWidget {
               Icons.chevron_left,
               color: Colors.white,
             ),
-            backgroundColor: Hexdcml("#2397FA"),
+            backgroundColor: Colors.amberAccent,
             onPressed: () => Get.back(),
           ),
         ),
         body: Container(
-          color: Colors.blue,
+          color: Colors.amber,
           height: MediaQuery.of(context).size.height,
           child: SingleChildScrollView(
             child: Column(
@@ -96,7 +96,7 @@ class Register extends StatelessWidget {
                         padding: const EdgeInsets.all(5.0),
                         child: Container(
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15),
+                            borderRadius: BorderRadius.circular(30),
                             color: Colors.white,
                           ),
                           child: TextField(
@@ -108,13 +108,22 @@ class Register extends StatelessWidget {
                                   TextStyle(backgroundColor: Colors.red),
                               hintText: "                      Criar Senha",
                               border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(0)),
-                              prefixIcon: Icon(Icons.lock),
+                                  borderRadius: BorderRadius.circular(30)),
+                              prefixIcon: Icon(
+                                Icons.lock,
+                                color: Colors.amber,
+                              ),
                               suffixIcon: IconButton(
                                 onPressed: () => _.vispssword(),
                                 icon: _.password
-                                    ? Icon(Icons.visibility)
-                                    : Icon(Icons.visibility_off),
+                                    ? Icon(
+                                        Icons.visibility,
+                                        color: Colors.amber,
+                                      )
+                                    : Icon(
+                                        Icons.visibility_off,
+                                        color: Colors.amber,
+                                      ),
                               ),
                             ),
                           ),
@@ -127,7 +136,7 @@ class Register extends StatelessWidget {
                         padding: const EdgeInsets.all(5.0),
                         child: Container(
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15),
+                            borderRadius: BorderRadius.circular(30),
                             color: Colors.white,
                           ),
                           child: TextField(
@@ -139,13 +148,19 @@ class Register extends StatelessWidget {
                                   TextStyle(backgroundColor: Colors.red),
                               hintText: "                    Repetir senha",
                               border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(0)),
-                              prefixIcon: Icon(Icons.lock),
+                                  borderRadius: BorderRadius.circular(30)),
+                              prefixIcon: Icon(Icons.lock, color: Colors.amber),
                               suffixIcon: IconButton(
                                 onPressed: () => _.vispssword(),
                                 icon: _.password
-                                    ? Icon(Icons.visibility)
-                                    : Icon(Icons.visibility_off),
+                                    ? Icon(
+                                        Icons.visibility,
+                                        color: Colors.amber,
+                                      )
+                                    : Icon(
+                                        Icons.visibility_off,
+                                        color: Colors.amber,
+                                      ),
                               ),
                             ),
                           ),
@@ -199,9 +214,10 @@ class Register extends StatelessWidget {
                         width: 300,
                         child: Btn(
                           color: Colors.white,
-                          colorText: Hexdcml("#2397FA"),
+                          colorText: Colors.amber,
                           rout: "/home",
-                          name: "Criar a Conta",
+                          name: "Cadastrar-se",
+                          fontSize:20
                         ),
                       ),
                     ),

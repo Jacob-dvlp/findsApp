@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:mobile/util/hexdcml.dart';
 import 'package:mobile/views/screens/controllers-screens/controller_login.dart';
-import 'package:mobile/views/widgets/custons.dart';
+import 'package:validatorless/validatorless.dart';
 
 class LoginScreen extends StatelessWidget {
   @override
@@ -11,13 +10,13 @@ class LoginScreen extends StatelessWidget {
     return GetBuilder<ControllerLogin>(
       init: ControllerLogin(),
       builder: (_) => Scaffold(
-        backgroundColor: Hexdcml("#2397FA"),
+        backgroundColor: Colors.amber,
         body: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               SizedBox(
-                height: 100,
+                height: 90,
               ),
               Text(
                 "Login",
@@ -60,12 +59,36 @@ class LoginScreen extends StatelessWidget {
                                   TextStyle(fontSize: 17, color: Colors.white),
                             ),
                           )),
-                      InputsText(
-                        controller: _.email,
-                        title: "Seu Email",
-                        icon: Icon(
-                          Icons.email_outlined,
-                          color: Colors.blue,
+                      Padding(
+                        padding: const EdgeInsets.all(5.0),
+                        child: Padding(
+                          padding: const EdgeInsets.all(5.0),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(30),
+                              color: Colors.white,
+                            ),
+                            child: TextFormField(
+                              validator: Validatorless.multiple([
+                                Validatorless.required("Email obrigatório"),
+                                Validatorless.email("Email inválido")
+                              ]),
+                              controller: _.email,
+                              keyboardType: TextInputType.emailAddress,
+                              decoration: InputDecoration(
+                                fillColor: Colors.white,
+                                counterStyle:
+                                    TextStyle(backgroundColor: Colors.red),
+                                hintText: "Email",
+                                border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(30)),
+                                prefixIcon: Icon(
+                                  Icons.email,
+                                  color: Colors.amber,
+                                ),
+                              ),
+                            ),
+                          ),
                         ),
                       ),
                       SizedBox(
@@ -87,11 +110,12 @@ class LoginScreen extends StatelessWidget {
                           padding: const EdgeInsets.all(5.0),
                           child: Container(
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(15),
+                              borderRadius: BorderRadius.circular(30),
                               color: Colors.white,
                             ),
                             child: TextFormField(
-                              validator: (_) {},
+                              validator:
+                                  Validatorless.required("Campo obrigatório"),
                               controller: _.passwordEditing,
                               obscureText: _.password,
                               keyboardType: TextInputType.text,
@@ -99,21 +123,21 @@ class LoginScreen extends StatelessWidget {
                                 fillColor: Colors.white,
                                 counterStyle:
                                     TextStyle(backgroundColor: Colors.red),
-                                hintText: "Sua senha",
+                                hintText: "Senha",
                                 border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(0)),
+                                    borderRadius: BorderRadius.circular(30)),
                                 prefixIcon: Icon(
                                   Icons.lock,
-                                  color: Colors.blue,
+                                  color: Colors.amber,
                                 ),
                                 suffixIcon: IconButton(
                                   onPressed: () => _.vispssword(),
                                   icon: _.password
                                       ? Icon(Icons.visibility_off,
-                                          color: Colors.blue)
+                                          color: Colors.amber)
                                       : Icon(
                                           Icons.visibility,
-                                          color: Colors.blue,
+                                          color: Colors.amber,
                                         ),
                                 ),
                               ),
@@ -143,18 +167,37 @@ class LoginScreen extends StatelessWidget {
                         height: 50,
                       ),
                       ClipRRect(
-                        borderRadius: BorderRadius.circular(10),
-                        child: Container(
-                          width: 300,
-                          child: Btn(
-                            colorText: Hexdcml("#2397FA"),
-                            rout: "/home",
-                            color: Colors.white,
-                            name: "Login",
-                            fontSize: 18,
-                          ),
-                        ),
-                      ),
+                          borderRadius: BorderRadius.circular(10),
+                          child: Container(
+                            height: 50,
+                            width: 180,
+                            child: ClipRRect(
+                              child: ElevatedButton(
+                                autofocus: true,
+                                style: ButtonStyle(
+                                  backgroundColor:
+                                      MaterialStateProperty.all<Color?>(
+                                          Colors.white),
+                                ),
+                                onPressed: () {
+                                  var formvald =
+                                      _.key.currentState?.validate() == true;
+                                  if (formvald == true) {
+                                    Get.toNamed("/home");
+                                  } else {
+                                    print("Erro");
+                                  }
+                                },
+                                child: Text(
+                                  "Login",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.amber,
+                                      fontSize: 18),
+                                ),
+                              ),
+                            ),
+                          )),
                       SizedBox(
                         height: 75,
                       ),

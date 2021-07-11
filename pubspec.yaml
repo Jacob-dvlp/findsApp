@@ -26,8 +26,13 @@ dependencies:
   get:
   curved_navigation_bar:
   flutter_svg:
+  # shared_preferences:
   getwidget: ^2.0.2
   url_launcher: ^6.0.7
+  http:
+  fluttertoast: ^8.0.7
+  validatorless: ^1.2.0
+
   
 
 
