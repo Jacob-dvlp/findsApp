@@ -1,7 +1,4 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/avd.dart';
 import 'package:get/get.dart';
 
 class InputsText extends StatelessWidget {

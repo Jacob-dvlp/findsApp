@@ -1,4 +1,4 @@
-class UiUrl {
+class URL {
   //Register user
   String point = "http:192.168.1.2:3000/";
   String login = "login_user";

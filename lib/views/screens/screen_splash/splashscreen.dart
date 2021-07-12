@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:mobile/util/hexdcml.dart';
 import 'package:mobile/views/screens/controllers-screens/controller_splash.dart';
 
 class Splashscreen extends StatelessWidget {

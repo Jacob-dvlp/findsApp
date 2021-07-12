@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mobile/util/hexdcml.dart';
 import 'package:mobile/views/screens/controllers-screens/controller_register.dart';
 import 'package:mobile/views/widgets/custons.dart';
 

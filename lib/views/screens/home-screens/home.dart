@@ -1,32 +1,13 @@
 import 'dart:math';
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:mobile/views/screens/controllers-screens/controller_home.dart';
 
-class HomeScreens extends StatefulWidget {
-  const HomeScreens({Key? key}) : super(key: key);
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
-  _HomeScreensState createState() => _HomeScreensState();
-}
-
-class _HomeScreensState extends State<HomeScreens> {
-  @override
-  double value = 0;
-  bool darkmode = false;
-  Brightness? _brightness;
-
-  void chengThema() {
-    _brightness =
-        _brightness == Brightness.dark ? Brightness.light : Brightness.dark;
-    setState(() {});
-  }
-
-  static const TextStyle? drawetitles =
-      TextStyle(fontSize: 15, fontWeight: FontWeight.bold);
   Widget build(BuildContext context) {
     return GetBuilder<ControllersScreen>(
       init: ControllersScreen(),
@@ -36,10 +17,9 @@ class _HomeScreensState extends State<HomeScreens> {
             Container(
               decoration: BoxDecoration(
                 gradient: LinearGradient(colors: [
-                  Colors.amber,
+                  Colors.white,
+                  Colors.white,
                   Colors.amberAccent,
-                  Colors.amber,
-                  Colors.amber,
                 ], begin: Alignment.topCenter, end: Alignment.topCenter),
               ),
             ),
@@ -55,14 +35,18 @@ class _HomeScreensState extends State<HomeScreens> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            CircleAvatar(
-                              backgroundColor: Colors.amber[500],
-                              maxRadius: 56,
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(65),
-                                child: Image.asset(
-                                  "assets/img/larte.jpg",
-                                  width: 300,
+                            Container(
+                              margin: EdgeInsets.,
+                              width: MediaQuery.of(context).size.width,
+                              child: CircleAvatar(
+                                backgroundColor: Colors.amber[500],
+                                maxRadius: 56,
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(65),
+                                  child: Image.asset(
+                                    "assets/img/larte.jpg",
+                                    width: 300,
+                                  ),
                                 ),
                               ),
                             ),
@@ -96,7 +80,7 @@ class _HomeScreensState extends State<HomeScreens> {
                             trailing: Icon(Icons.chevron_right),
                             title: Text(
                               "Criar publicação",
-                              style: drawetitles,
+                              style: _.drawetitles,
                             ),
                             onTap: () {},
                           ),
@@ -108,7 +92,7 @@ class _HomeScreensState extends State<HomeScreens> {
                             trailing: Icon(Icons.chevron_right),
                             title: Text(
                               "Editar perfil",
-                              style: drawetitles,
+                              style: _.drawetitles,
                             ),
                             onTap: () {},
                           ),
@@ -117,11 +101,10 @@ class _HomeScreensState extends State<HomeScreens> {
                               Icons.dark_mode,
                               color: Colors.white,
                             ),
-                            trailing:
-                                Switch(value: darkmode, onChanged: (v) {}),
+                            trailing: Switch(value: true, onChanged: (v) {}),
                             title: Text(
                               "Dark mode",
-                              style: drawetitles,
+                              style: _.drawetitles,
                             ),
                           ),
                           ListTile(
@@ -132,7 +115,7 @@ class _HomeScreensState extends State<HomeScreens> {
                             trailing: Icon(Icons.chevron_right),
                             title: Text(
                               "FeedBack",
-                              style: drawetitles,
+                              style: _.drawetitles,
                             ),
                             onTap: () {},
                           ),
@@ -141,21 +124,21 @@ class _HomeScreensState extends State<HomeScreens> {
                             padding: EdgeInsets.only(left: 20),
                             child: Text(
                               "Redes Sociais",
-                              style: drawetitles,
+                              style: _.drawetitles,
                             ),
                           ),
                           ListTile(
                             leading: Icon(Icons.facebook, color: Colors.white),
                             title: Text(
                               "Facebook",
-                              style: drawetitles,
+                              style: _.drawetitles,
                             ),
                           ),
                           ListTile(
                             leading: Icon(Icons.email, color: Colors.white),
                             title: Text(
                               "E-mail",
-                              style: drawetitles,
+                              style: _.drawetitles,
                             ),
                           ),
                           Divider(),
@@ -166,7 +149,7 @@ class _HomeScreensState extends State<HomeScreens> {
                             ),
                             title: Text(
                               "Sobre nós",
-                              style: drawetitles,
+                              style: _.drawetitles,
                             ),
                             onTap: () {},
                           ),
@@ -177,7 +160,7 @@ class _HomeScreensState extends State<HomeScreens> {
                             ),
                             title: Text(
                               "Sair",
-                              style: drawetitles,
+                              style: _.drawetitles,
                             ),
                             onTap: () {
                               Get.back();
@@ -191,7 +174,7 @@ class _HomeScreensState extends State<HomeScreens> {
               ),
             ),
             TweenAnimationBuilder(
-              tween: Tween<double>(begin: 0, end: value),
+              tween: Tween<double>(begin: 0, end: _.value),
               duration: Duration(milliseconds: 500),
               curve: Curves.easeInQuad,
               builder: (_, double val, __) {
@@ -248,18 +231,11 @@ class _HomeScreensState extends State<HomeScreens> {
               },
             ),
             GestureDetector(
-              // onTap: () {
-
-              //},
               onHorizontalDragUpdate: (e) {
                 if (e.delta.dx > 0) {
-                  setState(() {
-                    value = 1;
-                  });
+                  _.updateDrawer();
                 } else {
-                  setState(() {
-                    value = 0;
-                  });
+                  _.updatDrawerZero();
                 }
               },
             )

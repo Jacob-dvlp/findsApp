@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:mobile/views/screens/home-screens/home.dart';
 import 'package:mobile/views/screens/screen-login/login.dart';
@@ -20,7 +19,7 @@ class PageRouter {
         transition: Transition.zoom),
     GetPage(
         name: Pages.HOMESCREEN,
-        page: () => HomeScreens(),
+        page: () => HomeScreen(),
         transition: Transition.zoom),
     GetPage(
         name: Pages.SPLASCREEN,

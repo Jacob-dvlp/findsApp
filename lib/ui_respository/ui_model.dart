@@ -1,5 +1,6 @@
-import 'package:get/get.dart';
 
 abstract class UiModel {
-  Future loginUser(String email, String password);
+  Future<dynamic> loginUser(String email, String password);
+
+  Future<dynamic> createUser();
 }
