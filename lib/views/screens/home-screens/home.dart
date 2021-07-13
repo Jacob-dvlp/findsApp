@@ -36,7 +36,6 @@ class HomeScreen extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Container(
-                              margin: EdgeInsets.,
                               width: MediaQuery.of(context).size.width,
                               child: CircleAvatar(
                                 backgroundColor: Colors.amber[500],
