@@ -211,12 +211,36 @@ class Register extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10),
                       child: Container(
                         width: 300,
-                        child: Btn(
-                          color: Colors.white,
-                          colorText: Colors.amber,
-                          rout: "/home",
-                          name: "Cadastrar-se",
-                          fontSize:20
+                        // child: Btn(
+                        //   color: Colors.white,
+                        //   colorText: Colors.amber,
+                        //   rout: "/home" ,
+                        //   name: "Cadastrar-se",
+                        //   fontSize:20
+                        // ),
+                        child: Container(
+                          height: 50,
+                          width: 180,
+                          child: ClipRRect(
+                            child: ElevatedButton(
+                              autofocus: true,
+                              style: ButtonStyle(
+                                backgroundColor:
+                                    MaterialStateProperty.all<Color?>(
+                                        Colors.white),
+                              ),
+                              onPressed: () {
+                                // _.userRegister.createUser();
+                              },
+                              child: Text(
+                                "Cadastrar-se",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.amber,
+                                    fontSize: 20),
+                              ),
+                            ),
+                          ),
                         ),
                       ),
                     ),

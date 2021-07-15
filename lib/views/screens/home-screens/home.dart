@@ -164,7 +164,7 @@ class HomeScreen extends StatelessWidget {
                             onTap: () {
                               Get.back();
                             },
-                          )
+                          ),
                         ],
                       ),
                     ),
@@ -203,21 +203,148 @@ class HomeScreen extends StatelessWidget {
                           padding: const EdgeInsets.all(8.0),
                           child: Card(
                             child: Container(
+                              decoration: BoxDecoration(
+                                border: Border.all(color: Colors.black45),
+                                borderRadius: BorderRadius.only(
+                                  bottomRight: Radius.circular(80),
+                                  bottomLeft: Radius.circular(
+                                    80,
+                                  ),
+                                ),
+                              ),
                               width: MediaQuery.of(context).size.width,
-                              height: 260,
+                              height: MediaQuery.of(context).size.height / 2,
                               child: Stack(
                                 children: [
-                                  SvgPicture.asset("assets/svg/card.svg"),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: SvgPicture.asset(
+                                      "assets/svg/splash.svg",
+                                      width: 340,
+                                    ),
+                                  ),
                                   Align(
                                     alignment: Alignment.bottomCenter,
                                     child: Opacity(
-                                      opacity: 0.5,
+                                      opacity: 0.89,
                                       child: Container(
-                                        height: 100,
-                                        color: Colors.amber[500],
+                                        decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            border: Border.all(
+                                                color: Colors.black)),
+                                        height:
+                                            MediaQuery.of(context).size.height /
+                                                4.8,
                                       ),
                                     ),
-                                  )
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Align(
+                                      alignment: Alignment.bottomLeft,
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                                top: 230.0),
+                                            child: Align(
+                                              alignment: Alignment.centerLeft,
+                                              child: Text("Cartão Multicaxa",
+                                                  style: TextStyle(
+                                                    fontSize: 17,
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
+                                                  textAlign: TextAlign.start),
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                const EdgeInsets.only(top: 1.0),
+                                            child: Text(
+                                                "Um pouco da descriçao do item perdido vai\n aqui. Não deve ir todo, mas somente o preview... ",
+                                                style: TextStyle(
+                                                  fontSize: 17,
+                                                ),
+                                                textAlign: TextAlign.justify),
+                                          ),
+                                          Row(
+                                            children: [
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.all(5.0),
+                                                child: Container(
+                                                  width: 200,
+                                                  child: ElevatedButton(
+                                                    onPressed: () {},
+                                                    child: Text(
+                                                      "Ver item",
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.bold),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.all(8.0),
+                                                child: Container(
+                                                  width: 100,
+                                                  height: 40,
+                                                  decoration: BoxDecoration(
+                                                      border: Border.all(
+                                                          color: Colors.grey)),
+                                                  child: IconButton(
+                                                      onPressed: () {},
+                                                      icon:
+                                                          Icon(Icons.message)),
+                                                ),
+                                              ),
+                                            ],
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                  Align(
+                                    alignment: Alignment.topRight,
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(
+                                          right: 5.0, top: 9),
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          border: Border.all(
+                                            color: Colors.grey,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                        ),
+                                        width: 48,
+                                        height: 45,
+                                        child: Align(
+                                          alignment: Alignment.topLeft,
+                                          child: Padding(
+                                            padding: const EdgeInsets.only(
+                                                left: 11.0, top: 4.0),
+                                            child: Column(
+                                              children: [
+                                                Icon(Icons.visibility),
+                                                Text(
+                                                  "100",
+                                                  style: TextStyle(
+                                                      fontSize: 12,
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
                                 ],
                               ),
                             ),

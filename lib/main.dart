@@ -12,9 +12,10 @@ class HomePage extends StatelessWidget {
       initialRoute: PageRouter.INITIL,
       getPages: PageRouter.routes,
       darkTheme: ThemeData.dark(),
-      
       theme: ThemeData(
-          primaryColor: Colors.amber[500], primarySwatch: Colors.amber),
+        primaryColor: Colors.amber[500],
+        primarySwatch: Colors.amber,
+      ),
     );
   }
 }

@@ -26,7 +26,8 @@ dependencies:
   get:
   curved_navigation_bar:
   flutter_svg:
-  # shared_preferences:
+  # get_storage: ^2.0.2
+
   getwidget: ^2.0.2
   url_launcher: ^6.0.7
   http:

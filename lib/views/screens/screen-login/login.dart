@@ -183,6 +183,8 @@ class LoginScreen extends StatelessWidget {
                                   var formvald =
                                       _.key.currentState?.validate() == true;
                                   if (formvald == true) {
+                                    _.userLogin.loginUser(
+                                        _.email.text, _.passwordEditing.text);
                                     Get.toNamed("/home");
                                   } else {
                                     print("Erro");
